@@ -12,9 +12,9 @@ app = Flask(__name__, template_folder=template_dir)
 
 # --- CONFIGURAÇÕES DO WATSON ASSISTANT ---
 API_KEY = os.getenv("WATSON_API_KEY", "KEBT6SoMU8BbsLnATvKw9uEUaqoEm1O9m3EEuEt7fh_z")
-ASSISTANT_ID = os.getenv("WATSON_ASSISTANT_ID", "93eda45a-1df5-4735-aa5d-9e3ca3b27b47")
+ASSISTANT_ID = os.getenv("WATSON_ASSISTANT_ID", "49eeffe4-449e-4589-9f17-3257b57084a4")
 SERVICE_URL = os.getenv("WATSON_URL", "https://api.us-south.assistant.watson.cloud.ibm.com")
-ENVIRONMENT_ID = os.getenv("WATSON_ENVIRONMENT_ID", "93eda45a-1df5-4735-aa5d-9e3ca3b27b47")
+ENVIRONMENT_ID = os.getenv("WATSON_ENVIRONMENT_ID", "49eeffe4-449e-4589-9f17-3257b57084a4")
 
 # Autenticação com a SDK da IBM
 authenticator = IAMAuthenticator(API_KEY)
