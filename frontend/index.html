@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioIA - Assistente Conversacional</title>
+    <style>
+        * { box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f4f6f9; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .chat-container { width: 100%; max-width: 480px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); overflow: hidden; display: flex; flex-direction: column; height: 85vh; }
+        .chat-header { background-color: #b71c1c; color: white; padding: 16px; text-align: center; font-weight: bold; font-size: 1.1em; }
+        .chat-box { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .message { max-width: 80%; padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.4; word-wrap: break-word; }
+        .user-message { background-color: #e3f2fd; align-self: flex-end; color: #0d47a1; border-bottom-right-radius: 2px; }
+        .bot-message { background-color: #f1f1f1; align-self: flex-start; color: #333; border-bottom-left-radius: 2px; }
+        .chat-input { display: flex; border-top: 1px solid #ddd; padding: 10px; background: #fff; }
+        .chat-input input { flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 6px; outline: none; }
+        .chat-input button { background-color: #b71c1c; color: white; border: none; padding: 10px 16px; margin-left: 8px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .chat-input button:hover { background-color: #9a0007; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">CardioIA - Assistente Cardiológico</div>
+    <div class="chat-box" id="chatBox"></div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Digite sua resposta..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<script>
+    let conversationContext = {};
+
+    // Ao carregar a página, envia uma mensagem vazia para disparar o nó "welcome" (Bem-vindo) do seu JSON
+    window.onload = function() {
+        sendMessage("");
+    };
+
+    async function sendMessage(textOverride = null) {
+        const input = document.getElementById("userInput");
+        const message = textOverride !== null ? textOverride : input.value.trim();
+        
+        // Se a mensagem for digitada pelo usuário, exibe no chat
+        if (textOverride === null) {
+            if (!message) return;
+            appendMessage(message, "user-message");
+            input.value = "";
+        }
+
+        try {
+            const res = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    message: message, 
+                    context: conversationContext 
+                })
+            });
+            const data = await res.json();
+            
+            if (data.status === "success") {
+                conversationContext = data.context; // Armazena variáveis capturadas (nome, e-mail, idade)
+                data.response.forEach(text => {
+                    if (text) appendMessage(text, "bot-message");
+                });
+            } else {
+                appendMessage("Erro na conexão com o assistente.", "bot-message");
+            }
+        } catch (e) {
+            appendMessage("Erro ao conectar ao servidor backend.", "bot-message");
+        }
+    }
+
+    function appendMessage(text, className) {
+        const chatBox = document.getElementById("chatBox");
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `message ${className}`;
+        msgDiv.innerText = text;
+        chatBox.appendChild(msgDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function handleKeyPress(e) {
+        if (e.key === "Enter") sendMessage();
+    }
+</script>
+
+</body>
+</html>

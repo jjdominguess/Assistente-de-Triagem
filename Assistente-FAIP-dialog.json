@@ -1,0 +1,513 @@
+{
+  "intents": [
+    {
+      "intent": "dados_do_usuario",
+      "examples": [
+        {
+          "text": "Me chamo Maria"
+        },
+        {
+          "text": "meu email é carlos@gmail.com"
+        },
+        {
+          "text": "meu email e joao@gmail.com"
+        },
+        {
+          "text": "Meu email é paciente@email.com"
+        },
+        {
+          "text": "Meu nome é João"
+        },
+        {
+          "text": "minha data de nascimento e 10/10/1985"
+        },
+        {
+          "text": "Nasci em 15/05/1990"
+        },
+        {
+          "text": "Tenho 30 anos"
+        }
+      ],
+      "description": "Fornecimento de dados pessoais"
+    },
+    {
+      "intent": "doacao_de_sangue",
+      "examples": [
+        {
+          "text": "Como funciona a doação de sangue?"
+        },
+        {
+          "text": "Posso fazer doação de sangue?"
+        },
+        {
+          "text": "Quais os requisitos para doador de sangue?"
+        },
+        {
+          "text": "Quero doar sangue"
+        }
+      ],
+      "description": "Dúvidas ou agendamento sobre doação de sangue"
+    },
+    {
+      "intent": "preparacao_exame_coleta",
+      "examples": [
+        {
+          "text": "Como me preparo para exame de sangue?"
+        },
+        {
+          "text": "Preciso de jejum para exame de coleta?"
+        },
+        {
+          "text": "Quais as orientações para exames de coleta?"
+        }
+      ],
+      "description": "Dúvidas diretas sobre preparo de exames de coleta"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "data_agendamento",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "03/08",
+          "synonyms": [
+            "03/08",
+            "03 de agosto",
+            "dia 03",
+            "dia 3"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "08/09",
+          "synonyms": [
+            "08/09",
+            "08 de setembro",
+            "dia 08",
+            "dia 8"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "10/08",
+          "synonyms": [
+            "10/08",
+            "10 de agosto",
+            "dia 10"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "15/09",
+          "synonyms": [
+            "15/09",
+            "15 de setembro",
+            "dia 15"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "18/08",
+          "synonyms": [
+            "18/08",
+            "18 de agosto",
+            "dia 18"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "especialidade_medica",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Cardiologia",
+          "synonyms": [
+            "cardio",
+            "cardiologia",
+            "cardiologista",
+            "coração"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Dermatologia",
+          "synonyms": [
+            "dermatologia",
+            "dermatologista",
+            "pele"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Endocrinologia",
+          "synonyms": [
+            "endocrinologia",
+            "endocrinologista"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Ortopedia",
+          "synonyms": [
+            "ortopedia",
+            "ortopedista"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "exame_e_consulta",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "consulta",
+          "synonyms": [
+            "agendar consulta",
+            "consulta",
+            "consultas",
+            "marcar consulta",
+            "médico"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "exame",
+          "synonyms": [
+            "agendar exame",
+            "exame",
+            "exames",
+            "fazer exame",
+            "marcar exame"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "tipo_exame",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "coleta",
+          "synonyms": [
+            "coleta",
+            "exame de coleta",
+            "exame de sangue",
+            "glicose",
+            "hemograma",
+            "plasma",
+            "sangue",
+            "ureia"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "imagem",
+          "synonyms": [
+            "ecocardiograma",
+            "exame de imagem",
+            "imagem",
+            "raio x",
+            "raio-x",
+            "ressonância",
+            "ultrassom",
+            "ultrassonografia"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Boas-vindas e Coleta de Nome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá! Eu sou a Ana AI, assistente virtual do CardioIA. Serei responsável pela sua triagem inicial.\nPara começarmos, qual é o seu nome completo?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Coleta de Data de Nascimento",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Obrigado! E qual é a sua data de nascimento (ou idade)?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "email_paciente": "<? input.text ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "Triagem_MenuPrincipal"
+      },
+      "conditions": "#dados_do_usuario",
+      "dialog_node": "Coletar_DataNascimento",
+      "previous_sibling": "Coletar_Email"
+    },
+    {
+      "type": "standard",
+      "title": "Coleta de E-mail",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Prazer em te conhecer! Qual é o seu e-mail de contato?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "nome_paciente": "<? input.text ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "Coletar_DataNascimento"
+      },
+      "conditions": "#dados_do_usuario",
+      "dialog_node": "Coletar_Email",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Confirmação da Consulta",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Perfeito! Sua consulta de $especialidade_escolhida foi agendada para o dia @data_agendamento.\n\nRecomendação: No dia do atendimento, traga seus documentos pessoais e anote sintomas ou dúvidas para conversar com o médico."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@data_agendamento",
+      "dialog_node": "Confirmar_Consulta",
+      "previous_sibling": "Fluxo_Consulta_Datas"
+    },
+    {
+      "type": "standard",
+      "title": "Confirmação e Preparação do Exame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Seu exame de $categoria_exame foi pré-agendado para @data_agendamento!\n\nINSTRUÇÕES DE PREPARAÇÃO:\n- Se for Exame de Coleta: É necessário jejum mínimo de 8 horas. Após a coleta, oferecemos um desjejum na unidade.\n- Se for Exame de Imagem: Compareça com roupas leves e confortáveis (sem metal/zíper). Caso possua alergia a látex ou ao gel de ultrassom, informe a equipe antes do procedimento."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@data_agendamento",
+      "dialog_node": "Confirmar_Exame_e_Preparacao",
+      "previous_sibling": "Fluxo_Exame_Datas"
+    },
+    {
+      "type": "standard",
+      "title": "Orientações sobre Doação de Sangue",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ficamos felizes com a sua intenção de doar sangue! ❤️\nRequisitos básicos para doação:\n- Ter entre 16 e 69 anos;\n- Pesar no mínimo 50kg;\n- Estar alimentado e bem descansado (mínimo de 6h de sono);\n- Apresentar documento oficial com foto.\n\nPara agendar sua doação, acione o posto de coleta parceiro mais próximo."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#doacao_de_sangue",
+      "dialog_node": "Doacao_de_Sangue",
+      "previous_sibling": "Confirmar_Exame_e_Preparacao"
+    },
+    {
+      "type": "standard",
+      "title": "Fallback - Trata Mensagens Não Identificadas",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Desculpe, não consegui compreender sua resposta. Poderia reformular?"
+              },
+              {
+                "text": "Não entendi muito bem. Você pode escolher entre agendar consultas, exames ou obter informações sobre doação de sangue."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em_outros_casos",
+      "previous_sibling": "Doacao_de_Sangue",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Datas Disponíveis para Consulta",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "As datas disponíveis para $especialidade_escolhida são:\n- 03 de Agosto\n- 10 de Agosto\n- 18 de Agosto\n\nQual dessas datas fica melhor para você?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "especialidade_escolhida": "@especialidade_medica"
+      },
+      "conditions": "@especialidade_medica",
+      "dialog_node": "Fluxo_Consulta_Datas",
+      "previous_sibling": "Fluxo_Consulta_Especialidade"
+    },
+    {
+      "type": "standard",
+      "title": "Seleção de Especialidade Médica",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Temos atendimento para as seguintes especialidades:\n- Cardiologia\n- Dermatologia\n- Endocrinologia\n- Ortopedia\n\nQual especialidade médica você deseja agendar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@exame_e_consulta:consulta",
+      "dialog_node": "Fluxo_Consulta_Especialidade",
+      "previous_sibling": "Triagem_MenuPrincipal"
+    },
+    {
+      "type": "standard",
+      "title": "Datas Disponíveis para Exames",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "As datas disponíveis para exames de $categoria_exame são:\n- 08 de Setembro\n- 15 de Setembro\n- 23 de Setembro\n\nPor favor, digite a data desejada."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "categoria_exame": "@tipo_exame"
+      },
+      "conditions": "@tipo_exame",
+      "dialog_node": "Fluxo_Exame_Datas",
+      "previous_sibling": "Fluxo_Exame_Tipo"
+    },
+    {
+      "type": "standard",
+      "title": "Seleção do Tipo de Exame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Trabalhamos com dois tipos de exames:\n1. Exames de Coleta (ex: Hemograma, Glicose, Ureia)\n2. Exames de Imagem (ex: Ecocardiograma, Raio-X, Ultrassom, Ressonância)\n\nQual categoria de exame você precisa agendar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@exame_e_consulta:exame",
+      "dialog_node": "Fluxo_Exame_Tipo",
+      "previous_sibling": "Confirmar_Consulta"
+    },
+    {
+      "type": "standard",
+      "title": "Menu Principal de Triagem",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cadastro inicial concluído com sucesso!\nComo posso te ajudar hoje? Escolha uma opção:\n1. Agendamento de Consulta\n2. Agendamento de Exames\n3. Informações sobre Doação de Sangue"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "data_nascimento": "<? input.text ?>"
+      },
+      "conditions": "#dados_do_usuario || true",
+      "dialog_node": "Triagem_MenuPrincipal",
+      "previous_sibling": "Coletar_DataNascimento"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "none_of_the_above_prompt": "Nenhuma das opções acima"
+    }
+  },
+  "learning_opt_out": false,
+  "language": "en",
+  "description": "Assistente conversacional de triagem, agendamento de consultas e exames com orientações pré-exame.",
+  "name": "Assistente-FAIP-dialog"
+}
