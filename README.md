@@ -42,7 +42,7 @@ Com a solução, pretende-se:
 ## 🧠 Estrutura Macro do Repositório
 
 ```bash
-📂 project
+📂 Assistente triagem médica
 │
 ├── 📂 assets/
 │
