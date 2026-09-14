@@ -1,0 +1,755 @@
+{
+  "intents": [
+    {
+      "intent": "dados_do_usuario",
+      "examples": [
+        {
+          "text": "anos de idade"
+        },
+        {
+          "text": "@email.com"
+        },
+        {
+          "text": "esse é meu email"
+        },
+        {
+          "text": "@gmail.com"
+        },
+        {
+          "text": "Maria"
+        },
+        {
+          "text": "me chamo"
+        },
+        {
+          "text": "me chamo João "
+        },
+        {
+          "text": "meu email"
+        },
+        {
+          "text": "meu email é"
+        },
+        {
+          "text": "meu nome é"
+        },
+        {
+          "text": "minha idade é"
+        },
+        {
+          "text": "@outlook.com"
+        },
+        {
+          "text": "pode me chamar de"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "doacao_de_sangue",
+      "examples": [
+        {
+          "text": "doação de sangue"
+        },
+        {
+          "text": "doador de sangue"
+        },
+        {
+          "text": "doar sangue"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "marcar_consulta",
+      "examples": [
+        {
+          "text": "agendar consulta"
+        },
+        {
+          "text": "agendar consulta médica"
+        },
+        {
+          "text": "agendar consultas"
+        },
+        {
+          "text": "consulta"
+        },
+        {
+          "text": "marcar consulta"
+        },
+        {
+          "text": "marcar consultas"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "marcar_exames",
+      "examples": [
+        {
+          "text": "Agendar exame"
+        },
+        {
+          "text": "Agendar exames"
+        },
+        {
+          "text": "Exames"
+        },
+        {
+          "text": "Fazer exame"
+        },
+        {
+          "text": "marcar exames"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "preparacao_exame_coleta",
+      "examples": [
+        {
+          "text": "cuidados com exames de coleta"
+        },
+        {
+          "text": "orientação para exames de coleta"
+        },
+        {
+          "text": "Preparação para exames de coleta"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "data_de_consultas",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "data de consultas",
+          "synonyms": [
+            "03/08",
+            "03 de agosto",
+            "10/08",
+            "10 de agosto",
+            "18/08",
+            "18 de agosto",
+            "dia 03",
+            "dia 10",
+            "dia 18"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "data_de_exames",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "data de exames",
+          "synonyms": [
+            "08/09",
+            "08 de setembro",
+            "15/09",
+            "15 de setembro",
+            "23/09",
+            "23 de setembro",
+            "dia 08",
+            "dia 15",
+            "dia 23"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "email_paciente",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "carlos@email.com",
+          "synonyms": [
+            "carlos@email.com",
+            "carlos@gmail.com",
+            "carlos@hotmail.com",
+            "carlos@outlook.com"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "maria@email.com",
+          "synonyms": [
+            "maria@email.com",
+            "maria@gmail.com",
+            "maria@hotmail.com",
+            "maria@outlook.com"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "especialidade_medica",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "especialidade",
+          "synonyms": [
+            "cardiologia ",
+            "dermatologia",
+            "endocrinologia",
+            "nefrologia",
+            "neurologia",
+            "ortopedia",
+            "pediatria"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "exame-e-consulta",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "consulta",
+          "synonyms": [
+            "agendar consulta",
+            "agendar uma consulta",
+            "consulta",
+            "consultas",
+            "marcar consulta",
+            "marcar uma consulta"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "exame",
+          "synonyms": [
+            "agendar exame",
+            "agendar um exame",
+            "exame",
+            "exames",
+            "marcar exame",
+            "marcar um exame"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "exames",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "exame de imagem",
+          "synonyms": [
+            "imagem",
+            "raio x",
+            "raio-x",
+            "ressonância",
+            "ultrassonografia"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "exames de coleta",
+          "synonyms": [
+            "coleta",
+            "glicose",
+            "hemoglobina",
+            "hemograma",
+            "plasma",
+            "uréia"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "idade_paciente",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "anos",
+          "synonyms": [
+            "18",
+            "25",
+            "33",
+            "37",
+            "40",
+            "45",
+            "48",
+            "minha idade é",
+            "possuo 20 anos",
+            "tenho 30 anos"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "nome_paciente",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Carlos",
+          "synonyms": [
+            "Carlos",
+            "Me chamo Carlos",
+            "Meu nome é Carlos",
+            "Pode me chamar de Carlos"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Maria",
+          "synonyms": [
+            "Maria",
+            "Me chamo Maria ",
+            "Meu nome é Maria",
+            "Pode me chamar de Maria"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nome",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá. Eu sou a Ana Ai, serei responsável por fazer a triagem de atendimento. Poderia me passar algumas informações?\nQual o seu nome?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {},
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "digress_in": "does_not_return",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_1_1789321893521",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Agendar consulta da especialidade",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Consulta agendada"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_5_1789314269987"
+      },
+      "conditions": "@data_de_consultas",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_10_1789314102059",
+      "previous_sibling": "node_2_1789308941592"
+    },
+    {
+      "type": "standard",
+      "title": "Recomendações exame de imagem",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Recomendamos que compareça ao exame com roupas leves para facilitar a troca da mesma com o avental próprio para realização do procedimento. Caso tenho alguma alergia a latex ou gel da ultrassonografia será perguntado no momento do procedimento, ou fique à vontade para avisar o profissional que realizará o exame."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@data_de_exames",
+      "dialog_node": "node_10_1789321893172",
+      "previous_sibling": "node_2_1789314201983"
+    },
+    {
+      "type": "standard",
+      "title": "Escolha do tipo de exame Exame ",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "",
+      "dialog_node": "node_1_1789309089323",
+      "previous_sibling": "node_5_1789314269987"
+    },
+    {
+      "type": "standard",
+      "title": "Triagem",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Agora de qual serviço você precisa? Consulta ou exames?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@exame-e-consulta",
+      "dialog_node": "node_1_1789310143779",
+      "previous_sibling": "node_2_1789307826240"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Perfeito, temos os seguintes exames disponíveis: raio-x, ultrassonografia, ressonância magnética"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1789309089323",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_2_1789314201983"
+      },
+      "conditions": "@exames:(exame de imagem)",
+      "dialog_node": "node_1_1789321159441"
+    },
+    {
+      "type": "standard",
+      "title": "Recomendações exame de coleta",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para exames de coleta de sangue é necessário o prazo mínimo de 8h em jejum, após a finalização do procedimento será oferecido um lanche para você realizar o desjejum. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@exames:(exames de coleta)",
+      "dialog_node": "node_1_1789321893521",
+      "previous_sibling": "node_10_1789321893172"
+    },
+    {
+      "type": "standard",
+      "title": "nome do paciente",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Qual seu o email?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "nome_do_paciente": "@nome_paciente"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_9_1789307743918"
+      },
+      "conditions": "#dados_do_usuario",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1789307704399",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "idade do paciente",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Obrigado pelo dados $nome_do_paciente."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1789310143779"
+      },
+      "conditions": "#dados_do_usuario",
+      "dialog_node": "node_2_1789307826240",
+      "previous_sibling": "node_9_1789307743918"
+    },
+    {
+      "type": "standard",
+      "title": "Escolha de especialidade médica",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Este é o calendário para essa especialidade: 03 de agosto de 2026, 10 de agosto e 18 de agosto."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@especialidade_medica",
+      "dialog_node": "node_2_1789308941592",
+      "previous_sibling": "node_1_1789310143779"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Qual especialidade você precisa?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1789310143779",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_2_1789308941592"
+      },
+      "conditions": "@exame-e-consulta:consulta",
+      "dialog_node": "node_2_1789310897599"
+    },
+    {
+      "type": "standard",
+      "title": "Agendar do exame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Este é o calendário para esse exame: 08 de setembro de 2026, 15 de setembro e 23 de setembro."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@exames:(exame de imagem)",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1789314201983",
+      "previous_sibling": "node_1_1789309089323"
+    },
+    {
+      "type": "standard",
+      "title": "Recomendações",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Caso seja consulta o médico passará todos os exames responsáveis para ter boa visualização do seu quadro para que continue fazendo a manutenção da sua boa saúde, se houver algum tipo de desconforto ou algum acontecimento que seja a intenção da consulta tenha em mente os todos os sintomas e momentos que ocorreram para seja feita melhor avaliação possível."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1789314269987",
+      "previous_sibling": "node_10_1789314102059"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Qual tipo de exame você precisa? Imagem ou Coleta?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1789310143779",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1789309089323"
+      },
+      "conditions": "@exame-e-consulta:exame",
+      "dialog_node": "node_8_1789311540971",
+      "previous_sibling": "node_2_1789310897599"
+    },
+    {
+      "type": "standard",
+      "title": "email do paciente",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " Qual a sua idade?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "email_do_paciente": "@email_paciente"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_2_1789307826240"
+      },
+      "conditions": "#dados_do_usuario",
+      "dialog_node": "node_9_1789307743918",
+      "previous_sibling": "node_2_1789307704399"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Perfeito, temos os seguintes exames: hemograma complete, hemoglobina glicada e uréia."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1789309089323",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_2_1789314201983"
+      },
+      "conditions": "@exames:(exames de coleta)",
+      "dialog_node": "node_9_1789321162784",
+      "previous_sibling": "node_1_1789321159441"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "Meu nome é Carlos "
+    }
+  ],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores",
+      "use_connect_to_support_prompt": "Connect to support",
+      "single_answer_clarification_prompt": "Something else"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "language": "pt-br",
+  "description": "",
+  "name": "Assistente-de-Saúde-Fiap-dialog"
+}
