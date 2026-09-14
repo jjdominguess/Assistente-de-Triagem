@@ -9,76 +9,53 @@
 
 # Graduação ON em Inteligência Artificial #
 
-# Fire Guard AI #
+# Assistente Cardiológico Inteligente: Experiência do Paciente #
 
 ## 📜 Descrição
 
-O **Fire Guard AI** é uma solução integrada de Inteligência Artificial para detecção de incêndios em áreas florestais, combinando Visão Computacional, Machine Learning e IA Generativa para monitoramento ambiental e preservação de biomas vulneráveis.
+O **Assistente Cardiológico Inteligente** é uma solução conversacional baseada em Inteligência Artificial para realizar a triagem inicial de atendimento hospitalar. A aplicação utiliza o IBM Watson Assistant para compreender as mensagens do usuário e direcioná-lo para serviços relacionados a consultas, exames e doação de sangue.
 
-Este projeto demonstra a aplicação prática de **técnicas avançadas de IA**, contemplando:
+O projeto demonstra a aplicação prática de IA conversacional em um contexto hospitalar, contemplando:
 
-- **Visão Computacional**: Arquitetura MobileNetV2 com Transfer Learning
-- **Dataset de Treinamento**: ~2.700 imagens de incêndios e áreas sem fogo
-- **Performance do Modelo**: 90% de acurácia no conjunto de testes
-- **Interface Web**: Streamlit para análise em tempo real de imagens
-- **IA Generativa**: LLM Ollama para geração de relatórios em linguagem natural
-- **Integração Disciplinar**: Fusão de múltiplas competências do curso
+- **Atendimento conversacional**: interação com o paciente por meio de linguagem natural;
+- **Coleta de dados iniciais**: nome, e-mail e data de nascimento ou idade;
+- **Triagem de serviços**: direcionamento para consultas, exames ou informações sobre doação de sangue;
+- **Agendamento orientativo**: apresentação de especialidades, tipos de exames e datas disponíveis;
+- **Orientações prévias**: informações básicas sobre o preparo para exames e os requisitos para doação de sangue;
+- **Integração com o IBM Watson Assistant**: processamento das intenções, entidades e etapas do diálogo.
 
-O sistema processa imagens enviadas pelo usuário, identifica probabilidade de ocorrência de incêndio e gera relatórios técnicos acessíveis, demonstrando como tecnologias de IA podem contribuir para iniciativas de sustentabilidade e proteção ambiental.
+O sistema oferece uma primeira orientação ao paciente e organiza o encaminhamento para os serviços disponíveis. Ele não substitui a avaliação de profissionais de saúde, o diagnóstico médico ou o atendimento de emergência.
 
 
 ## 🎯 Objetivo
 
-Este projeto visa demonstrar a aplicação integrada de Inteligência Artificial para detecção de incêndios florestais, garantindo:
+Este projeto tem como objetivo desenvolver um assistente virtual capaz de apoiar a triagem inicial de atendimento hospitalar, facilitando o primeiro contato do paciente com a instituição e orientando-o sobre os próximos passos.
 
-- 📌 Detecção inteligente de incêndios com 90% de acurácia
-- 📌 Integração de Visão Computacional (Transfer Learning com MobileNetV2)
-- 📌 Interface acessível para análise em tempo real com Streamlit
-- 📌 IA Generativa para geração de relatórios técnicos em linguagem natural
-- 📌 Monitoramento ambiental e proteção de biomas vulneráveis
+Com a solução, pretende-se:
+
+- 📌 tornar o atendimento inicial mais rápido e organizado;
+- 📌 coletar informações básicas antes do encaminhamento do paciente;
+- 📌 direcionar o usuário para consultas e exames de acordo com sua necessidade;
+- 📌 fornecer orientações preliminares para exames e doação de sangue;
+- 📌 demonstrar o uso responsável de IA conversacional no ambiente hospitalar.
 
 ## 🧠 Estrutura Macro do Repositório
 
 ```bash
-📂 FIRE-GUARD-AI
+📂 project
 │
-├── 📂 AI_GENERATIVE
-│   └── 📜 generative.py
+├── 📂 assets/
 │
-├── 📂 ASSETS
-│   └── 📜 logo-fiap.png
+├── 📂 backend/
+│   └── 📜 main.py
 │
-├── 📂 BOARD
-│   └── 📜 app.py
+├── 📂 frontend/
+│   └── 📜 index.html
 │
-├── 📂 DATASET
-│   ├── 📂 train/
-│   │   ├── 📂 fire/
-│   │   └── 📂 nofire/
-│   ├── 📂 val/
-│   │   ├── 📂 fire/
-│   │   └── 📂 nofire/
-│   ├── 📂 test/
-│   │   ├── 📂 fire/
-│   │   └── 📂 nofire/
-│   └── 📂 test2/
-│
-├── 📂 DOCS
-│   └── 📜 fire_guard_AI.drawio
-│
-├── 📂 MODELS
-│   ├── 📜 __init__.py
-│   ├── 📜 train_model.py
-│   ├── 📜 predict.py
-│   ├── 📜 generator.py
-│   └── 📜 fire_guard_model.keras
-│
-├── 📂 SUPPORT_FILES
-│   └── 📜 remove_corrupted_images.py
-│
+├── 📜 Assistente-FAIP-dialog.json
+├── 📜 logo-fiap.png
 ├── 📜 README.md
-├── 📜 requirements.txt
-└── 📂 venv/
+└── 📜 relatorio_assistente_faip.md
 ```
 
 ## 📋 Licença
